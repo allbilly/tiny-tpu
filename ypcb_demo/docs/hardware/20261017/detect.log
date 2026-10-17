@@ -1,0 +1,25 @@
+firmware_file : /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/xusb_xp2.hex
+FX2 USB before firmware: 03fd:0008 bus=1 address=75
+Waiting reload: [==================================================] 100.00%
+
+Done
+FX2: initialized device opened; claiming interface 0
+USB alternate interface 1 not present; keeping current setting
+FX2 version:    6109
+CPLD version:   feff
+Const0 version: b503
+Const1 version: 0400
+Const2 version: 0d20
+status 43 connected: yes
+Jtag frequency : requested 500000 Hz -> real 750000 Hz
+Raw IDCODE:
+- 0 -> 0x23751093
+- 1 -> 0xffffffff
+Fetched TDI, end-of-chain
+found 1 devices
+index 0:
+	idcode 0x23751093
+	manufacturer xilinx
+	family kintex7
+	model  xc7k480t
+	irlength 6

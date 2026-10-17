@@ -1,0 +1,1384 @@
+{
+  "status": "PASS_PHYSICAL_TINY_TPU_XOR_SELFTEST_OUTPUTS",
+  "hardware_accessed": true,
+  "application_verified": true,
+  "programming_performed": false,
+  "flash_written": false,
+  "samples": [
+    {
+      "elapsed_seconds": 0.001705006929114461,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.05440277699381113,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.10708277393132448,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.15967247099615633,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.21233058697544038,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.26505878393072635,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.31776408897712827,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.3705923849483952,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.4231779339024797,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.47581702389288694,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.52832097990904,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.5810998729430139,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.6339362739818171,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.6868325569666922,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.7396867919014767,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.7924317109864205,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.8451824709773064,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.898076621000655,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 0.9509406639263034,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.0037039369344711,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.0565755649004132,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.109450046904385,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.1621835649712011,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.2150466759921983,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.2679647909244522,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.3209570249309763,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.3739305539056659,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.4267963799647987,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.4796918429201469,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.5325492229312658,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.5854214619612321,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.6384419789537787,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.6914703509537503,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.7443044879473746,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.7972317700041458,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.8502395829418674,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.9031153379473835,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 1.955769355990924,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.0087184589356184,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.0615356439957395,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.1142283749068156,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.167087798938155,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.219916375936009,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.272955367923714,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.3259716070024297,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.3789539829595014,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.43209693999961,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.4848524489207193,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.537689200951718,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.590436914935708,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.643197323894128,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.696030337945558,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.748863512999378,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.8017321249935776,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.854627195978537,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.9075290199834853,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 2.960479706991464,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.0133045959519222,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.066243669949472,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.1191214789869264,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.1722369448980317,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.225157894892618,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.2779586690012366,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.3308347049169242,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.3836105219088495,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.4367354759015143,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.4897299939766526,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.542732778005302,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.595941278967075,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.648949552909471,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.701850324985571,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.754809386911802,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.807584161986597,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.8605938989203423,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.9138300319900736,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 3.9669369019102305,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.020040835952386,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.073222265928052,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.126460662926547,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.179734025965445,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.232882373966277,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.2858575358986855,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.339171284926124,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.392225464922376,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.445119073963724,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.498095067916438,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.5510003679664806,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.6040260249283165,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.657570607960224,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.7108657219214365,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.764090783894062,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.8169977279612795,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.870207670959644,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbffffffffffffffffc0dffffffffffffffffffdfffffffffffff7dffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 0,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.9232275179820135,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    },
+    {
+      "elapsed_seconds": 4.976460023899563,
+      "boundary_hex": "000db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6ff6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6df6dbfffffffffffffffff0dffffffffffffffffffdfffffffffffff7fffffffffffffffffffb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6dbfdb6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db60000000000000006db6db0000000000000000000002d97",
+      "outputs": {
+        "heartbeat": 1,
+        "pass": 1,
+        "failure": 0
+      },
+      "disabled": {
+        "heartbeat": 0,
+        "pass": 0,
+        "failure": 0
+      }
+    }
+  ],
+  "utc": "2026-10-17T10:14:00.744423+00:00",
+  "bitstream": "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/tiny_tpu_ypcb.bit",
+  "bitstream_sha256": "b377cee1dc3082ab6de7cced229a1538bfa987335cfa5dc8cbd63a9268ecae42",
+  "part": "7k480tffg1156",
+  "core_clock_mhz": 150,
+  "load_receipt_sha256": "010c203363de5e0b679e399db4fceffc5c6edd9fa2c50d64ac8b7655b5124bcb",
+  "bsdl": "/home/fedora/vivado/2026.1/Vivado/ids_lite/ISE/kintex7/data/xc7k480t_ffg1156.bsd",
+  "bsdl_sha256": "2b427cd4b2a1c7093012720c50ef8c1710947d9547472472ca3c105980ab599a",
+  "boundary_length": 1395,
+  "pins": {
+    "heartbeat": {
+      "pin": "P30",
+      "output_cell": 852,
+      "disable_cell": 851
+    },
+    "pass": {
+      "pin": "M30",
+      "output_cell": 846,
+      "disable_cell": 845
+    },
+    "failure": {
+      "pin": "N30",
+      "output_cell": 849,
+      "disable_cell": 848
+    }
+  },
+  "observer_sha256": "76da6ded0cbaef9d37bfb0b5f21d01bd21cf73978b0a79e1d60a27d7c1d60b9d",
+  "scope": "Configured output values through SAMPLE, not full internal-score readback",
+  "xvc_info": "xvcServer_v1.0:1048576",
+  "idcode": "0x23751093",
+  "temperature_before": {
+    "raw": 40512,
+    "celsius": 38.39
+  },
+  "capture_ir": 53,
+  "temperature_after": {
+    "raw": 40636,
+    "celsius": 39.25
+  },
+  "heartbeat_transitions": 22,
+  "limitations": [
+    "PASS is the built-in exact XOR scoreboard, observed through its output.",
+    "No direct internal score/count readback; no DDR or PCIe test.",
+    "Configured clock comes from the bound bitstream; not an independent frequency measurement."
+  ]
+}

@@ -1,0 +1,92 @@
+--- a/himbaechel/arch.cc
++++ b/himbaechel/arch.cc
+@@ -33,16 +33,25 @@
+ #include "timing.h"
+ #include "util.h"
+ 
++#include <atomic>
++#include <cstdint>
+ #include <filesystem>
++#include <unordered_map>
++#include <vector>
+ 
+ NEXTPNR_NAMESPACE_BEGIN
+ 
+ static constexpr int database_version = 6;
+ 
++// Invalidate every thread's lookup cache on architecture creation or database
++// reload, including when a later architecture reuses an earlier address.
++static std::atomic<std::uint64_t> pip_name_lookup_epoch{0};
++
+ static const ChipInfoPOD *get_chip_info(const RelPtr<ChipInfoPOD> *ptr) { return ptr->get(); }
+ 
+ Arch::Arch(ArchArgs args) : args(args)
+ {
++    pip_name_lookup_epoch.fetch_add(1, std::memory_order_acq_rel);
+     HimbaechelArch *arch = HimbaechelArch::find_match(args.device);
+     if (!arch) {
+         std::string available = HimbaechelArch::list();
+@@ -117,6 +126,7 @@
+ 
+ void Arch::load_chipdb(const std::string &path)
+ {
++    pip_name_lookup_epoch.fetch_add(1, std::memory_order_acq_rel);
+     std::string db_path;
+     if (!args.chipdb_override.empty()) {
+         db_path = args.chipdb_override;
+@@ -362,17 +372,45 @@
+     NPNR_ASSERT(name.size() == 3 || (name.size() == 4 && name[3] == id("INV")));
+     const int tile = tile_name2idx.at(name[0]);
+     const auto &tdata = chip_tile_info(chip_info, tile);
+-    for (int pip = 0; pip < tdata.pips.ssize(); pip++) {
+-        if (IdString(tdata.wires[tdata.pips[pip].dst_wire].name) == name[1] &&
+-            IdString(tdata.wires[tdata.pips[pip].src_wire].name) == name[2]) {
+-
++    struct LookupCache {
++        const Arch *owner = nullptr;
++        std::uint64_t epoch = 0;
++        std::unordered_map<const TileTypePOD *, std::unordered_map<int, std::vector<int>>> wires_by_type;
++    };
++    static thread_local LookupCache cache;
++    const auto epoch = pip_name_lookup_epoch.load(std::memory_order_acquire);
++    if (cache.owner != this || cache.epoch != epoch) {
++        cache.wires_by_type.clear();
++        cache.owner = this;
++        cache.epoch = epoch;
++    }
++    // Index raw wire names once per tile type, rather than once per tile or
++    // once per PIP lookup. Retain all aliases; getWireByName normalises nodes.
++    auto entry = cache.wires_by_type.try_emplace(&tdata);
++    if (entry.second) {
++        for (int wire = 0; wire < tdata.wires.ssize(); wire++)
++            entry.first->second[tdata.wires[wire].name].push_back(wire);
++    }
++    const auto matches = entry.first->second.find(name[1].index);
++    if (matches == entry.first->second.end())
++        return PipId();
++    PipId result;
++    for (int wire : matches->second) {
++        for (int pip : tdata.wires[wire].pips_uphill) {
++            const auto &pdata = tdata.pips[pip];
++            if (IdString(tdata.wires[pdata.dst_wire].name) != name[1] ||
++                IdString(tdata.wires[pdata.src_wire].name) != name[2])
++                continue;
+             const auto tmp_pip = PipId(tile, pip);
+-            if ((name.size() == 3 && !isPipInverting(tmp_pip)) || (name.size() == 4 && isPipInverting(tmp_pip))) {
+-                return tmp_pip;
+-            }
+-        }
+-    }
+-    return PipId();
++            // Preserve the original lowest-index match, including inversion
++            // selection, aliases, and unordered incoming-PIP lists.
++            if (((name.size() == 3 && !isPipInverting(tmp_pip)) ||
++                 (name.size() == 4 && isPipInverting(tmp_pip))) &&
++                (result.index < 0 || pip < result.index))
++                result = tmp_pip;
++        }
++    }
++    return result;
+ }
+ 
+ IdStringList Arch::getPipName(PipId pip) const

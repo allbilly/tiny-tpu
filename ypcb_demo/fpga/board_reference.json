@@ -1,0 +1,76 @@
+{
+  "part": "xc7k480tffg1156-2",
+  "clock_hz": 50000000,
+  "pins": {
+    "SYS_CLK": {
+      "pin": "AA28",
+      "bank": "14",
+      "site": "IOB_X0Y174",
+      "tile": "LIOB33_X0Y173",
+      "pin_function": "IO_L13P_T2_MRCC_14"
+    },
+    "SYS_RSTN": {
+      "pin": "R28",
+      "bank": "15",
+      "site": "IOB_X0Y226",
+      "tile": "LIOB33_X0Y225",
+      "pin_function": "IO_L12P_T1_MRCC_AD5P_15",
+      "board_component": "SW_RESET",
+      "pulltype": "PULLUP"
+    },
+    "led[0]": {
+      "pin": "P30",
+      "bank": "15",
+      "site": "IOB_X0Y222",
+      "tile": "LIOB33_X0Y221",
+      "pin_function": "IO_L14P_T2_SRCC_15"
+    },
+    "led[1]": {
+      "pin": "M30",
+      "bank": "15",
+      "site": "IOB_X0Y220",
+      "tile": "LIOB33_X0Y219",
+      "pin_function": "IO_L15P_T2_DQS_15"
+    },
+    "led[2]": {
+      "pin": "N30",
+      "bank": "15",
+      "site": "IOB_X0Y221",
+      "tile": "LIOB33_X0Y221",
+      "pin_function": "IO_L14N_T2_SRCC_15"
+    }
+  },
+  "reference_paths_and_sha256": {
+    "/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/ypcb003381p1/1.0/board.xml": "558d4828c4eafb79c7f4d1e412c9c2923f1372855a33b31332fbc9635a318f46",
+    "/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/constraints/ypcb003381p1.xdc": "f958a95ba4dfcd96270d36afb12683b954aca635a0af515b164a61e5948587a9",
+    "/home/fedora/ypcb/ref/inspur-adventures/constraints/blink.xdc": "fa6b57eb07c7bfb98691804fcb50f89fa8e81c16655ae8375f75f2b57f5c49eb",
+    "/home/fedora/rknpu-fpga/build/reference/nextpnr-xilinx/xilinx/external/prjxray-db/kintex7/xc7k480tffg1156-2/package_pins.csv": "79d61d30289ac90775761696fef07f4a8e407396f39934e7c1fe4c35f2546c73",
+    "/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/constraints/physical_pinout.xlsx": "b2074e6a895e30c359c4d5f0ea1e00fcb0c9b7ff1622d74153cb255e41fd8760",
+    "/home/fedora/ypcb/ref/LC480T/YPCB-00338-1P1/\u65f6\u949f\u548cLED.xlsx": "0546fd5b658884e99c4107c2d314ba137904347f8021062318389943140c794a",
+    "/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/ypcb003381p1/1.0/part0_pins.xml": "87873694814549b6033543b0da07ac1b92d1bc13054de1b777b5478ceaeba6a1"
+  },
+  "scope": "Reference cross-check only, not physical board measurement or toolchain integrity signoff",
+  "physical_configuration_voltage": null,
+  "physical_cfgbvs_strap": null,
+  "physical_led_polarity": null,
+  "clock_iostandard_references": {
+    "LVCMOS18": [
+      "/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/constraints/ypcb003381p1.xdc",
+      "/home/fedora/ypcb/ref/inspur-adventures/constraints/blink.xdc"
+    ],
+    "LVCMOS33": {
+      "archive": "/home/fedora/ypcb/ref/LC480T/YPCB-00338-1P1/XDMA_480T_n_clear.7z",
+      "archive_sha256": "f117ddbb2a9954f47f3a84623f18844386ef5e337f47bf28c846f1354969250a",
+      "member": "XDMA_480T_n/XDMA_480T_n.srcs/constrs_1/new/IO.xdc",
+      "member_sha256": "f7f1429dc02e14790d8cfee77dcc6c58d5a4df8cdfd06a5786ddd9879c461975",
+      "port": "clk_50",
+      "pin": "AA28"
+    }
+  },
+  "physical_clock_iostandard": null,
+  "separate_pcie_reset_reference": {
+    "component": "pcie_perstn_rst",
+    "pin": "Y26"
+  },
+  "physical_reset_driver": null
+}

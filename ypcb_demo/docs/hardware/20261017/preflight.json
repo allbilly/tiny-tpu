@@ -1,0 +1,34 @@
+{
+  "status": "PASS_PRELOAD_ARTIFACT_AND_ROUTED_SIMULATION_BINDING",
+  "bitstream": "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/tiny_tpu_ypcb.bit",
+  "bitstream_sha256": "b377cee1dc3082ab6de7cced229a1538bfa987335cfa5dc8cbd63a9268ecae42",
+  "core_mhz": 150,
+  "part": "7k480tffg1156",
+  "hardware_accessed": false,
+  "fpga_programmed": false,
+  "flash_written": false,
+  "application_verified": false,
+  "signoff": {
+    "part": "xc7k480tffg1156-2",
+    "core_clock_mhz": 150,
+    "core_clock_period_ns": 6.667,
+    "clock_iostandard": "LVCMOS18",
+    "reset_pulltype": "PULLUP",
+    "setup_slack_ns": 0.544,
+    "hold_slack_ns": 0.108,
+    "internal_timing_coverage": true,
+    "fully_routed": true,
+    "routing_errors": 0,
+    "blocking_drc": 0,
+    "drc_ruledecks": [
+      "default",
+      "router_checks",
+      "timing_checks",
+      "bitstream_checks"
+    ]
+  },
+  "build_report_sha256": "9cb117926e9e2bcc2e0733b9212c15cecc648153c9e6e1d6e0bfa8842974f740",
+  "simulation_report_sha256": "92ee689ed30d049f718b0f42fe1ba6a30bbe71bb700689ba53676c6a9b2929b0",
+  "user_authorized_sram_test": true,
+  "utc": "2026-10-17T10:11:41.714685+00:00"
+}

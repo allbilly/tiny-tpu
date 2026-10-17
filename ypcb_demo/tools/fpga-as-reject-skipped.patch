@@ -1,0 +1,16 @@
+diff --git a/fpga/assembler.cc b/fpga/assembler.cc
+index 61cf78a..c902c7d 100644
+--- a/fpga/assembler.cc
++++ b/fpga/assembler.cc
+@@ -537,9 +537,8 @@ static absl::Status ParseFasmFile(FILE *input_stream,
+       [](uint32_t, std::string_view, std::string_view name,
+          std::string_view value) {});
+ 
+-    if (result == fasm::ParseResult::kUserAbort ||
+-        result == fasm::ParseResult::kError) {
+-      return absl::InternalError("internal error");
++    if (result >= fasm::ParseResult::kSkipped) {
++      return absl::InvalidArgumentError("invalid or skipped FASM input");
+     }
+   }
+   return absl::OkStatus();

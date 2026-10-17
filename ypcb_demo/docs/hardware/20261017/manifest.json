@@ -1,0 +1,27 @@
+{
+  "status": "PASS_PHYSICAL_TINY_TPU_150MHZ_XOR_QUICK_TEST",
+  "utc": "2026-10-17T10:14:28.812653+00:00",
+  "hardware_accessed": true,
+  "fpga_programmed": true,
+  "flash_written": false,
+  "application_verified": true,
+  "core_clock_mhz": 150,
+  "bitstream_sha256": "b377cee1dc3082ab6de7cced229a1538bfa987335cfa5dc8cbd63a9268ecae42",
+  "program_receipt": "/home/fedora/tiny-tpu/ypcb_demo/artifacts/hardware-20261017T101141792179Z/report.json",
+  "program_receipt_sha256": "010c203363de5e0b679e399db4fceffc5c6edd9fa2c50d64ac8b7655b5124bcb",
+  "observation_receipt": "/home/fedora/tiny-tpu/ypcb_demo/artifacts/hardware-quick150-20261017/observation/report.json",
+  "observation_receipt_sha256": "9b6e08e699bad51e1c330ba7852a3476a2ec580752a1421b8b12a5abb2dddbf6",
+  "samples": 95,
+  "pass_samples": 95,
+  "failure_samples": 0,
+  "heartbeat_transitions": 22,
+  "temperature_before_c": 38.39,
+  "temperature_after_c": 39.25,
+  "sram_after": "tiny-tpu 150 MHz XOR self-test; remains running",
+  "permanent_flash_after": "Unmodified OpenTPU c0172080; power cycle restores it",
+  "limitations": [
+    "PASS is the built-in exact XOR scoreboard, observed through its output.",
+    "No direct internal score/count readback; no DDR or PCIe test.",
+    "Configured clock comes from the bound bitstream; not an independent frequency measurement."
+  ]
+}

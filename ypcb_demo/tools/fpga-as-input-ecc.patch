@@ -1,0 +1,67 @@
+diff --git a/fpga/assembler.cc b/fpga/assembler.cc
+index 61cf78a..c902c7d 100644
+--- a/fpga/assembler.cc
++++ b/fpga/assembler.cc
+@@ -537,9 +537,8 @@ static absl::Status ParseFasmFile(FILE *input_stream,
+       [](uint32_t, std::string_view, std::string_view name,
+          std::string_view value) {});
+ 
+-    if (result == fasm::ParseResult::kUserAbort ||
+-        result == fasm::ParseResult::kError) {
+-      return absl::InternalError("internal error");
++    if (result >= fasm::ParseResult::kSkipped) {
++      return absl::InvalidArgumentError("invalid or skipped FASM input");
+     }
+   }
+   return absl::OkStatus();
+diff --git a/fpga/xilinx/BUILD b/fpga/xilinx/BUILD
+index fc06387..8f6d47e 100644
+--- a/fpga/xilinx/BUILD
++++ b/fpga/xilinx/BUILD
+@@ -309,6 +309,7 @@ cc_library(
+     ],
+     deps = [
+         ":arch-types",
++        ":arch-xc7-frame",
+         ":bitstream-writer",
+         ":configuration",
+         ":frames",
+diff --git a/fpga/xilinx/arch-xc7-frame.h b/fpga/xilinx/arch-xc7-frame.h
+index 3a61288..010ec89 100644
+--- a/fpga/xilinx/arch-xc7-frame.h
++++ b/fpga/xilinx/arch-xc7-frame.h
+@@ -138,7 +138,7 @@ void UpdateECC(FrameWords<arch> &words) {
+   CHECK(words.size() >= internal::kECCFrameNumber);
+   // Replace the old ECC with the new.
+   words[internal::kECCFrameNumber] &= 0xFFFFE000;
+-  words[internal::kECCFrameNumber] |= (internal::CalculateECC(words) & 0x1FFF);
++  words[internal::kECCFrameNumber] |= (internal::CalculateECC<arch>(words) & 0x1FFF);
+ }
+ }  // namespace xc7
+ }  // namespace xilinx
+diff --git a/fpga/xilinx/bitstream.h b/fpga/xilinx/bitstream.h
+index 738157d..7a6db3f 100644
+--- a/fpga/xilinx/bitstream.h
++++ b/fpga/xilinx/bitstream.h
+@@ -11,6 +11,7 @@
+ #include "absl/strings/string_view.h"
+ #include "fpga/database-parsers.h"
+ #include "fpga/xilinx/arch-types.h"
++#include "fpga/xilinx/arch-xc7-frame.h"
+ #include "fpga/xilinx/bitstream-writer.h"
+ #include "fpga/xilinx/configuration.h"
+ #include "fpga/xilinx/frames.h"
+@@ -37,8 +38,11 @@ class BitStream {
+                              const FramesData &frames_data, std::ostream &out) {
+     absl::btree_map<FrameAddress, FrameWords> converted_frames;
+     for (const auto &address_words_pair : frames_data) {
+-      converted_frames.emplace(address_words_pair.first,
+-                               address_words_pair.second);
++      FrameWords words = address_words_pair.second;
++      if constexpr (Arch == Architecture::kXC7) {
++        xc7::UpdateECC<xc7::Architecture::kBase>(words);
++      }
++      converted_frames.emplace(address_words_pair.first, words);
+     }
+     constexpr absl::string_view kGeneratorName = "fpga-assembler";
+     FramesType frames(converted_frames);

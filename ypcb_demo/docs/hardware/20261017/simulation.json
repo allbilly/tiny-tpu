@@ -1,0 +1,90 @@
+{
+  "status": "PASS_VIVADO_ROUTED_FUNCTIONAL_SIMULATION",
+  "scope": "Routed functional netlist in XSim; static timing is checked separately; no physical board test.",
+  "part": "xc7k480tffg1156-2",
+  "build_run": "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z",
+  "hardware_programmed": false,
+  "commands": [
+    {
+      "argv": [
+        "/home/fedora/vivado/2026.1/Vivado/bin/vivado",
+        "-mode",
+        "batch",
+        "-nojournal",
+        "-log",
+        "/home/fedora/tiny-tpu/ypcb_demo/artifacts/verify-vivado-20261016T103716670066Z/export.vivado.log",
+        "-source",
+        "/home/fedora/tiny-tpu/ypcb_demo/artifacts/verify-vivado-20261016T103716670066Z/export.tcl"
+      ],
+      "log": "export.log",
+      "timeout_seconds": 600,
+      "returncode": 0,
+      "seconds": 28.543
+    },
+    {
+      "argv": [
+        "/home/fedora/vivado/2026.1/Vivado/bin/xvlog",
+        "--sv",
+        "--work",
+        "work",
+        "/home/fedora/tiny-tpu/ypcb_demo/artifacts/verify-vivado-20261016T103716670066Z/routed_funcsim.v",
+        "/home/fedora/tiny-tpu/ypcb_demo/sim/tb_mapped.v",
+        "/home/fedora/vivado/2026.1/Vivado/data/verilog/src/glbl.v"
+      ],
+      "log": "compile.log",
+      "timeout_seconds": 600,
+      "returncode": 0,
+      "seconds": 2.878
+    },
+    {
+      "argv": [
+        "/home/fedora/vivado/2026.1/Vivado/bin/xelab",
+        "--mt",
+        "2",
+        "-L",
+        "unisims_ver",
+        "-L",
+        "unimacro_ver",
+        "-L",
+        "secureip",
+        "work.tb_mapped",
+        "work.glbl",
+        "-s",
+        "tinytpu_vivado"
+      ],
+      "log": "elaborate.log",
+      "timeout_seconds": 600,
+      "returncode": 0,
+      "seconds": 25.62
+    },
+    {
+      "argv": [
+        "/home/fedora/vivado/2026.1/Vivado/bin/xsim",
+        "tinytpu_vivado",
+        "-runall",
+        "-onerror",
+        "quit",
+        "-onfinish",
+        "quit",
+        "-log",
+        "/home/fedora/tiny-tpu/ypcb_demo/artifacts/verify-vivado-20261016T103716670066Z/xsim.engine.log"
+      ],
+      "log": "simulation.log",
+      "timeout_seconds": 180,
+      "returncode": 0,
+      "seconds": 18.268
+    }
+  ],
+  "part_header": "7k480tffg1156",
+  "inputs_sha256": {
+    "/home/fedora/tiny-tpu/ypcb_demo/tools/verify_vivado.py": "1e50f420c7ca29f74f2d269d2844c328bd43d388655d8306d35b6c16da6d5197",
+    "/home/fedora/tiny-tpu/ypcb_demo/tools/hardware.py": "a65a51821b9e6992ad2ca6dd14e39e1b24fd76d533f5ada0d5a0a0032687e76f",
+    "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/report.json": "9cb117926e9e2bcc2e0733b9212c15cecc648153c9e6e1d6e0bfa8842974f740",
+    "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/routed.dcp": "0120089e38017b1b96f32388770442697d362505433efc5815b61952d76bd0bb",
+    "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/tiny_tpu_ypcb.bit": "b377cee1dc3082ab6de7cced229a1538bfa987335cfa5dc8cbd63a9268ecae42",
+    "/home/fedora/tiny-tpu/ypcb_demo/sim/tb_mapped.v": "87bac1752d1a4e18650ae843c760b5e28dae07436470fa089327e5722061ba9c",
+    "/home/fedora/vivado/2026.1/Vivado/data/verilog/src/glbl.v": "6270251cf35e1fce3119fc79f8fb968912f7983027e43cf030409ba68f048936"
+  },
+  "netlist_sha256": "f1b564613ee915b4b936be4e6f11e83cbfe3f079379e5338dc8fcaab459a1388",
+  "pass_marker": "YPCB MAPPED REGRESSION PASS"
+}

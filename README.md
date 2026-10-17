@@ -36,6 +36,7 @@ https://github.com/user-attachments/assets/2a501151-bca8-4458-8015-81520375781c
 
 ## Project Folders
 
+- [`ypcb_demo/`](ypcb_demo/README.md): YPCB-00338-1P1 Kintex-7 port, autonomous TPU XOR self-test, native simulation, openXC7/Vivado build paths, and recorded 150 MHz physical test.
 - [`mnist_demo/`](mnist_demo/README.md): DE1-SoC MNIST demo with organized FPGA entry points in `fpga/`, JTAG host utilities in `host/`, checked-in and generated model data in `data/model/`, and generated outputs collected under `artifacts/`.
 - [`tiny-tpu-hardened/`](tiny-tpu-hardened/README.md): Hardened TPU variant with ASIC-ready RTL in `rtl/`, OpenLane inputs in `openlane/`, and focused regression benches in `sim/`.
 - [`xor_demo/`](xor_demo/README.md): Compact DE1-SoC XOR demo with Intel Quartus assets in `fpga/`, reusable TPU RTL in `rtl/`, board-level simulation in `sim/`, and preserved Quartus outputs in `artifacts/`.

@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "action": "program-sram",
+  "hardware_programmed": true,
+  "hardware_programming_attempted": true,
+  "configuration_state": "SRAM_LOAD_COMPLETED",
+  "application_verified": false,
+  "flash_written": false,
+  "commands": [
+    {
+      "argv": [
+        "lsusb"
+      ],
+      "log": "usb.log",
+      "timeout_seconds": 60,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fedora/openTPU/build/fedora-openxc7/xpcu-xvc-20261011T165026Z/binary/openFPGALoader",
+        "--cable",
+        "xilinxPlatformCableUsb",
+        "--freq",
+        "500000",
+        "--detect",
+        "--verbose-level",
+        "2"
+      ],
+      "log": "detect.log",
+      "timeout_seconds": 60,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/home/fedora/openTPU/build/fedora-openxc7/xpcu-xvc-20261011T165026Z/binary/openFPGALoader",
+        "--cable",
+        "xilinxPlatformCableUsb",
+        "--freq",
+        "500000",
+        "/home/fedora/tiny-tpu/ypcb_demo/artifacts/build-20261016T102846491634Z/tiny_tpu_ypcb.bit"
+      ],
+      "log": "program_sram.log",
+      "timeout_seconds": 232,
+      "returncode": 0
+    }
+  ],
+  "dlc10_devices": [
+    "Bus 001 Device 075: ID 03fd:0008 Xilinx, Inc. Platform Cable USB II"
+  ],
+  "idcode": "0x23751093",
+  "build_status": "BITSTREAM_PASS",
+  "experimental_openxc7": false,
+  "bitstream_part": "7k480tffg1156",
+  "bitstream_sha256": "b377cee1dc3082ab6de7cced229a1538bfa987335cfa5dc8cbd63a9268ecae42",
+  "requested_jtag_hz": 500000,
+  "bitstream_bytes": 2655908
+}

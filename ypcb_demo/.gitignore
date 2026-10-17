@@ -1,0 +1,3 @@
+artifacts/*
+!artifacts/README.md
+tools/__pycache__/

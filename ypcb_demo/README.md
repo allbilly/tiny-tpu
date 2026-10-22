@@ -23,10 +23,10 @@ seven-segment display. Existing `src/` changes are outside this port.
 | led[1] | M30 | LVCMOS18 | Green LED: all scores passed |
 | led[2] | N30 | LVCMOS18 | Yellow LED: sticky failure |
 
-Part: **xc7k480tffg1156-2**. Pin sources are the local
-`/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/constraints/ypcb003381p1.xdc`,
+Part: **xc7k480tffg1156-2**. Pin sources in the reference YPCB workspace are
+`ypcb/ref/ypcb_00338_1p1_hack/constraints/ypcb003381p1.xdc`,
 its `ypcb003381p1/1.0/board.xml`, and the independent blink constraints in
-`/home/fedora/ypcb/ref/inspur-adventures/constraints/blink.xdc`.
+`ypcb/ref/inspur-adventures/constraints/blink.xdc`.
 These are reference facts; actual clock, reset, I/O supplies and LED polarity
 still need confirmation on the powered card. `--led-active-low 1` in the build
 inverts all LEDs if required. A power-on counter and two-stage reset release
@@ -72,7 +72,7 @@ Failure clears the green LED and latches the yellow LED until reset.
 From this directory:
 
 ```sh
-make test       # offline evidence/loader/observer tests, Icarus board/fault and XOR tests
+make test       # offline build/evidence/loader/observer tests, Icarus board/fault and XOR tests
 make synth      # also Yosys XC7 mapping and mapped functional simulation
 make audit      # inventory every non-hidden ~/ directory and useful documents
 make prepare    # portable source bundle and manifest
@@ -169,10 +169,13 @@ hashes and revision are in
 These are the selected documented board settings; no physical measurement
 or board programming is claimed by bitstream preparation.
 
-Check the routed functional netlist with Vivado's XSim:
+Check the newly built routed functional netlist with Vivado's XSim. Set
+`BUILD_RUN` to the directory containing the `report.json` printed by the
+build command above:
 
 ```sh
-python3 tools/verify_vivado.py --run artifacts/build-20261016T102846491634Z \
+BUILD_RUN=artifacts/build-ACTUAL_NEW_RUN_DIRECTORY
+python3 tools/verify_vivado.py --run "$BUILD_RUN" \
   --vivado "$(command -v vivado)"
 ```
 
@@ -192,9 +195,14 @@ All three variants remain available. Each directory under `artifacts/` holds
 | 100 MHz | `build-20261016T100507250470Z` | +1.554 ns | +0.112 ns |
 | 50 MHz | `build-20261015T163138618115Z` | +7.613 ns | +0.104 ns |
 
-Use a variant's archived source bundle to repeat its historical routed
-simulation: the verifier checks the exact RTL/constraint hashes used for
-that build. Rebuilding with current sources uses the selected `--core-mhz`.
+The archived routed simulation results remain historical evidence for these
+images. Their original build reports predate the `routed_checkpoint_sha256`
+binding now required by `verify_vivado.py`. To reproduce routed simulation
+with the current verifier, make a fresh build and use its new directory as
+`BUILD_RUN`; the verifier checks both the implementation source hashes and
+the recorded checkpoint hash. A variant's archived source bundle preserves
+its historical inputs if those are needed for the rebuild. Select the
+matching `--core-mhz` when rebuilding.
 
 Allowed voltage/strap pairs are 1.5 or 1.8 with GND, and 2.5 or 3.3 with VCCO.
 The script requires complete placement/routing with no route errors, finite
@@ -214,13 +222,17 @@ access and the powered card/cable, from this directory:
 
 ```sh
 python3 tools/hardware.py check
-python3 tools/hardware.py init       # existing Fedora staged cable-RAM firmware
+python3 tools/hardware.py init       # existing staged cable-RAM firmware
 python3 tools/hardware.py detect     # require single XC7K480T IDCODE 0x23751093
 python3 tools/hardware.py program-sram --run artifacts/build-ACTUAL_RUN_DIRECTORY
 ```
 
-`init` calls the existing `/home/fedora/ypcb/dlc10-init.sh`, whose firmware
-hashes and boot/helper/overlay stages are already established in that project.
+Put a DLC10-capable `openFPGALoader` on `PATH`, or set `YPCB_OPENFPGALOADER`
+or pass `--loader /path/to/openFPGALoader` on each command. `init` calls
+`~/ypcb/dlc10-init.sh` by default; set `YPCB_INIT_SCRIPT` or pass
+`--init-script /path/to/dlc10-init.sh` when the YPCB workspace is elsewhere.
+Its firmware hashes and boot/helper/overlay stages are established in that
+separate project; the initializer and firmware are not included here.
 It uploads volatile cable firmware and performs detection. The script records
 fresh logs; previous cable tests are not a present-board detection result.
 The three local firmware files were rehashed and match the initializer's
@@ -244,7 +256,7 @@ state uncertain rather than claiming that the previous image was preserved.
 ### Physical 150 MHz quick test — October 17, 2026
 
 The existing `build-20261016T102846491634Z/tiny_tpu_ypcb.bit` was loaded into
-SRAM on the Fedora-connected XC7K480T, IDCODE `0x23751093`. Its bitstream,
+SRAM on the connected XC7K480T, IDCODE `0x23751093`. Its bitstream,
 routed simulation, signoff and critical RTL hashes were checked before load.
 The test performed no flash erase or write.
 

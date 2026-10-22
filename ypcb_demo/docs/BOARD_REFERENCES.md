@@ -3,9 +3,9 @@
 The local board XML, XDCs and exact-part package database agree on
 `xc7k480tffg1156-2`, AA28 for the 50 MHz clock, R28 for reset, and P30/M30/N30
 for red/green/yellow LEDs. The vendor spreadsheet
-`/home/fedora/ypcb/ref/ypcb_00338_1p1_hack/constraints/physical_pinout.xlsx`
+`~/ypcb/ref/ypcb_00338_1p1_hack/constraints/physical_pinout.xlsx`
 corroborates all five pin assignments in rows 66–68, 74 and 77. The separate
-`/home/fedora/ypcb/ref/LC480T/YPCB-00338-1P1/时钟和LED.xlsx` corroborates the
+`~/ypcb/ref/LC480T/YPCB-00338-1P1/时钟和LED.xlsx` corroborates the
 clock and LED assignments. Neither establishes electrical supplies or polarity.
 The reference file hashes are retained in `../fpga/board_reference.json`.
 

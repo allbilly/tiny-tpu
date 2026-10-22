@@ -1,7 +1,7 @@
 # Home-project reuse audit
 
 `python3 ypcb_demo/tools/audit_home.py` inventories every non-hidden top-level
-directory in `/home/fedora`, including every Git checkout, and recursively
+directory in the original user home directory, including every Git checkout, and recursively
 reads source/build documents. Generated build outputs, caches, dependency
 directories and symlink targets are excluded. The JSON report states these
 boundaries and retains each checkout revision, inspected file count and
@@ -75,7 +75,7 @@ not those electrical values. Their defaults therefore do not resolve the
 remaining loading prerequisites.
 
 The later direct tool inspection also verified
-`/home/fedora/tiny-gpu/build/ypcb/frame-smoke-1791213825695214370/report.json`
+`~/tiny-gpu/build/ypcb/frame-smoke-1791213825695214370/report.json`
 and its FASM/frame/bitstream artifact hashes. Its empty-design frame tools
 passed for `xc7k480tffg1156-2`; this checks a tool component, not GPU or TPU
 placement/routing or physical operation. The same project's matching

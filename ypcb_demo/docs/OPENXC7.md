@@ -1,11 +1,11 @@
 # OpenXC7 implementation
 
-The requested open-source route uses Yosys mapping, the current openXC7
+The requested open-source route uses Yosys mapping, the pinned openXC7
 Himbaechel Xilinx backend, and Project X-Ray's exact Kintex-7 database.
 Full Vivado is optional. The old `rknpu-fpga` nextpnr-xilinx executable is
 retained as a reference; its failed database tests are not used as a pass.
 
-The current upstream [installer](https://github.com/openXC7/toolchain-installer/blob/0cb31563418a2cfec44d68d7d0836e000d73fba6/toolchain-sources-builder.sh)
+The [installer snapshot inspected on October 5, 2026](https://github.com/openXC7/toolchain-installer/blob/0cb31563418a2cfec44d68d7d0836e000d73fba6/toolchain-sources-builder.sh)
 pins these sources:
 
 | Component | Revision |
@@ -16,11 +16,29 @@ pins these sources:
 | hansfbaier/fpga-assembler | `cf0e3f08455d502fc6392889c07f482ab8dd2d62` |
 
 Source checkouts and installer text are isolated in
-`artifacts/openxc7-toolchain/`. The Debian-oriented installer's automatic
-package installation/cleanup functions are not run on Fedora. Existing
+`artifacts/openxc7-toolchain/`. The installer's automatic package installation
+and cleanup functions were not used; install the prerequisites appropriate
+to the build host separately. Existing
 Yosys 0.65 performed this TPU's mapping; its successful synthesis, version,
 script and hashes are retained rather than relabeled as the installer's
 newer Yosys version.
+
+The examples below run from the repository root and refer to the preserved
+run identifiers from this build. Generated tools, databases and timestamped
+run directories are not included in a source checkout. Replace those run
+identifiers with the corresponding outputs when rebuilding. Set the external
+tool workspace to your own location before using the examples:
+
+```sh
+export YPCB_TOOLS=/absolute/path/to/shared/ypcb-tool-build
+export TPU_ARTIFACTS="$PWD/ypcb_demo/artifacts"
+```
+
+`YPCB_TOOLS` denotes a workspace containing `nextpnr-build/`,
+`nextpnr-himbaechel/`, `nextpnr-cli-build/`, `prjxray/`, `prjxray-db/`,
+`prjxray-build/` and `xray-venv/`, as used in the recorded build. If your
+tools use a different layout, supply their actual paths to the respective
+command options. The variable does not create or install those tools.
 
 The installer-pinned engine has a DSP control defect affecting this TPU's
 eight multipliers. [Issue 39](https://github.com/openXC7/nextpnr/issues/39)
@@ -76,7 +94,7 @@ Rebuild the lookup variant from the preserved PR66 parent:
 python3 ypcb_demo/tools/build_pip_lookup.py \
   --engine-source ypcb_demo/artifacts/openxc7-toolchain/nextpnr \
   --parent-manifest ypcb_demo/artifacts/openxc7-toolchain/nextpnr-pr66-20261005T164805878986Z/report.json \
-  --chipdb /home/fedora/tiny-gpu/build/ypcb/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin
+  --chipdb "$YPCB_TOOLS/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin"
 ```
 
 The first lookup build passed in
@@ -151,7 +169,7 @@ To reproduce the observed run:
 python3 ypcb_demo/tools/watch_chipdb.py \
   --build-manifest ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/report.json \
   --nextpnr ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/nextpnr-himbaechel \
-  --chipdb /home/fedora/tiny-gpu/build/ypcb/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin \
+  --chipdb "$YPCB_TOOLS/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin" \
   --timeout 28800 --interval 30
 ```
 
@@ -166,11 +184,11 @@ From the repository root, prepare or execute the route:
 ```sh
 python3 ypcb_demo/tools/openxc7.py \
   --mapped-run ypcb_demo/artifacts/verify-20261005T135302980969Z \
-  --nextpnr /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/nextpnr-himbaechel \
-  --engine-source /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/nextpnr \
-  --nextpnr-build-manifest /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/report.json \
-  --chipdb /home/fedora/tiny-gpu/build/ypcb/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin \
-  --database /home/fedora/tiny-gpu/build/ypcb/prjxray-db \
+  --nextpnr ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/nextpnr-himbaechel \
+  --engine-source ypcb_demo/artifacts/openxc7-toolchain/nextpnr \
+  --nextpnr-build-manifest ypcb_demo/artifacts/openxc7-toolchain/nextpnr-index-20261005T230057413667Z/report.json \
+  --chipdb "$YPCB_TOOLS/nextpnr-build/himbaechel/uarch/xilinx/chipdb-xc7k480t.bin" \
+  --database "$YPCB_TOOLS/prjxray-db" \
   --database-check-run ypcb_demo/artifacts/chipdb-check-20261006T053306875084Z \
   --wait-database-check 36000
 ```
@@ -190,8 +208,8 @@ the shared database build log without reading unfinished binary files:
 
 ```sh
   --wait-tools 14400 \
-  --nextpnr-build-log /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/nextpnr-pr66-build.log \
-  --chipdb-build-log /home/fedora/tiny-gpu/build/ypcb/nextpnr-build.log
+  --nextpnr-build-log ypcb_demo/artifacts/openxc7-toolchain/nextpnr-pr66-build.log \
+  --chipdb-build-log "$YPCB_TOOLS/nextpnr-build.log"
 ```
 
 For an indexed build, require `BUILT_PR66_INDEX_ENGINE_VARIANT` in its
@@ -276,13 +294,13 @@ or flash operation occurs in this implementation flow.
 For the current preserved and verified assembler, add:
 
 ```sh
-  --fpga-as /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/fpga-as-input-ecc.elf \
+  --fpga-as ypcb_demo/artifacts/openxc7-toolchain/fpga-as-input-ecc.elf \
   --assembler-check ypcb_demo/artifacts/assembler-check-20261005T174806522228Z \
   --assembler-check ypcb_demo/artifacts/assembler-check-20261005T174808668846Z
 ```
 
 The user-supplied openTPU reference
-`/home/fedora/ypcb_ref/openTPU/boards/ypcb-00338/constraints/otpu_top_ld.xdc`
+`openTPU/boards/ypcb-00338/constraints/otpu_top_ld.xdc`
 sets AA28 at 50 MHz with LVCMOS18 (lines 8–10), and configuration voltage
 1.8 V with CFGBVS GND (lines 81–83). These are explicit source settings;
 openTPU's `docs/flash.md` labels them as configuration settings and says the
@@ -354,8 +372,8 @@ against the independently retained exact-part frame-tool smoke artifacts:
 ```sh
 python3 ypcb_demo/tools/check_assembler.py \
   --fpga-as ypcb_demo/artifacts/openxc7-toolchain/fpga-as-input-ecc.elf \
-  --database /home/fedora/tiny-gpu/build/ypcb/prjxray-db \
-  --reference-run /home/fedora/tiny-gpu/build/ypcb/frame-smoke-1791213825695214370
+  --database "$YPCB_TOOLS/prjxray-db" \
+  --reference-run "$YPCB_TOOLS/frame-smoke-1791213825695214370"
 ```
 
 The checker verifies the reference artifact hashes, validates exact-part
@@ -402,23 +420,24 @@ pins 8.5.0; actual output is checked rather than assuming version equivalence.
 The successful build explicitly selects the installed LLVM linker; earlier
 missing-linker and incompatible-bfd attempts are preserved in the tool logs.
 
-The exact local rebuild command, from the assembler checkout, is:
+With Bazel and LLVM `ld.lld` on `PATH`, run this from the pinned assembler
+checkout (keep `TPU_ARTIFACTS` set to the absolute path above):
 
 ```sh
 bazel --batch \
-  --output_user_root=/home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/bazel-cache \
+  --output_user_root="$TPU_ARTIFACTS/openxc7-toolchain/bazel-cache" \
   build //fpga:fpga-as -c opt --curses=no --jobs=2 --verbose_failures \
-  --linkopt=-B/home/linuxbrew/.linuxbrew/opt/lld/bin --linkopt=-fuse-ld=lld
+  --linkopt="-B$(dirname "$(command -v ld.lld)")" --linkopt=-fuse-ld=lld
 ```
 
 For an isolated DSP engine build, from the repository root:
 
 ```sh
 python3 ypcb_demo/tools/build_pr66.py \
-  --base-source /home/fedora/tiny-gpu/build/ypcb/nextpnr-himbaechel \
-  --base-build /home/fedora/tiny-gpu/build/ypcb/nextpnr-cli-build \
-  --base-build-log /home/fedora/tiny-gpu/build/ypcb/nextpnr-cli-build.log \
-  --fixed-source /home/fedora/tiny-tpu/ypcb_demo/artifacts/openxc7-toolchain/nextpnr
+  --base-source "$YPCB_TOOLS/nextpnr-himbaechel" \
+  --base-build "$YPCB_TOOLS/nextpnr-cli-build" \
+  --base-build-log "$YPCB_TOOLS/nextpnr-cli-build.log" \
+  --fixed-source ypcb_demo/artifacts/openxc7-toolchain/nextpnr
 ```
 
 Use the new run's executable and manifest when repeating that command. Both
@@ -432,10 +451,10 @@ frame encoder:
 ```sh
 python3 ypcb_demo/tools/check_bitstream.py \
   --run ypcb_demo/artifacts/openxc7-20261006T053431049894Z \
-  --prjxray /home/fedora/tiny-gpu/build/ypcb/prjxray \
-  --database /home/fedora/tiny-gpu/build/ypcb/prjxray-db \
-  --python /home/fedora/tiny-gpu/build/ypcb/xray-venv/bin/python \
-  --frames2bit /home/fedora/tiny-gpu/build/ypcb/prjxray-build/tools/xc7frames2bit
+  --prjxray "$YPCB_TOOLS/prjxray" \
+  --database "$YPCB_TOOLS/prjxray-db" \
+  --python "$YPCB_TOOLS/xray-venv/bin/python" \
+  --frames2bit "$YPCB_TOOLS/prjxray-build/tools/xc7frames2bit"
 ```
 
 `--wait-seconds 57600` lets this check wait for the existing TPU runner;

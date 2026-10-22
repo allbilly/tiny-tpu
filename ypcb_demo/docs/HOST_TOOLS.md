@@ -2,7 +2,7 @@
 
 ## Full Vivado build verified, 2026-10-16
 
-`/home/fedora/vivado/2026.1/Vivado/bin/vivado -version` now returns Vivado
+On the recorded build host, `~/vivado/2026.1/Vivado/bin/vivado -version` returned Vivado
 2026.1, build 6511674. Synthesis and implementation successfully checked out
 their licenses for `xc7k480t`. The actual tiny-tpu vendor build is
 `artifacts/build-20261016T102846491634Z/report.json`, status `BITSTREAM_PASS`.
@@ -13,8 +13,8 @@ AA28 input. The routed functional regression also passed with the vendor models.
 The 30 retained DRC warnings recommend DSP pipelining. Current commands and
 artifact hashes are in [../README.md](../README.md).
 
-`/home/fedora/openTPU` is the current reference checkout;
-`/home/fedora/ypcb_ref/openTPU` resolves to it. Its board XDC and Vivado Tcl
+`~/openTPU` was the reference checkout;
+`~/ypcb_ref/openTPU` resolved to it. Its board XDC and Vivado Tcl
 agree on `xc7k480tffg1156-2`, the 50 MHz AA28 LVCMOS18 clock, LED pins,
 CONFIG_VOLTAGE 1.8 and CFGBVS GND. Reference hashes and revision are retained
 in `artifacts/vivado-reference-20261015T163335327441Z.json`.
@@ -23,8 +23,8 @@ in `artifacts/vivado-reference-20261015T163335327441Z.json`.
 
 At that time, tools included native Icarus, Yosys and Verilator under Linuxbrew,
 `/usr/bin/openFPGALoader`, the cable-specific
-`/home/fedora/ypcb/openFPGALoader/build-xpcu-debug/openFPGALoader` (v1.1.1),
-and `/home/fedora/vivado/2026.1.1/Vivado_Lab/bin/vivado_lab`.
+`~/ypcb/openFPGALoader/build-xpcu-debug/openFPGALoader` (v1.1.1),
+and `~/vivado/2026.1.1/Vivado_Lab/bin/vivado_lab`.
 `command -v vivado` then returned no executable. The following search and
 installer observations describe that earlier snapshot.
 
@@ -41,7 +41,7 @@ Mounted persistent filesystems are the local NVMe root/home and boot
 partitions; no separate mounted build/tool drive was present.
 
 The only Xilinx installer found is
-`/home/fedora/vivado/v.tar` (4,080,148,480 bytes). Its root directory is
+`~/vivado/v.tar` (4,080,148,480 bytes). Its root directory is
 `Vivado_Lab_2026.1.1_0904_0832`, verified by inspecting the tar members.
 The extracted installer and `.Xilinx/registry/installedSW.xml` also identify
 Vivado Lab Edition (Standalone). This archive cannot restore full Vivado.
@@ -111,9 +111,9 @@ alongside the existing Lab tools, then obtain the applicable Basic license.
 Vitis, Versal device support and the 96 GB all-products archive are not
 required by this RTL project.
 
-Fedora is the current host. Tool/device/license compatibility and any missing
-host libraries must be verified after installation; the installer has not
-been run here. A compatible Linux build machine can instead consume the
+At the time of that audit, the installer had not been run on its Linux host.
+Tool/device/license compatibility and any missing host libraries must be
+verified after installation. A compatible Linux build machine can consume the
 prepared source bundle without changing the board programming host.
 
 After installation, verify:

@@ -29,11 +29,14 @@ the current implementation inputs to match the recorded image, run:
 python3 ypcb_demo/tools/verify_hardware_result.py --check-current-sources
 ```
 
-This explicit check fails if an implementation file has changed or is missing;
+This explicit check requires the build Tcl, XDC, source list and every compiled
+source to have recorded hashes, and fails if an implementation file has changed or is missing;
 the routine test target validates the archive independently of current RTL.
 The observer snapshot remains the exact historical source; the reusable
 observer has since replaced assertions with checks that also run under
 `python -O` and `python -OO`.
+It also checks the complete SRAM-load receipt and exact device pin mapping,
+and reports PASS only after restoring BYPASS and closing the XVC connection.
 
 The bitstream and vendor BSDL are not bundled. If the original bitstream is
 available, add `--bitstream PATH/TO/tiny_tpu_ypcb.bit` to also check its hash.

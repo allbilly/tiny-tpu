@@ -1,6 +1,7 @@
 .PHONY: test synth audit prepare build bitstream
 test:
 	python3 tools/test_hardware.py
+	python3 tools/test_build_tools.py
 	python3 tools/test_observe_selftest.py
 	python3 tools/test_hardware_result.py
 	python3 tools/verify.py

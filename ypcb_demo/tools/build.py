@@ -4,11 +4,13 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
-import math
 from pathlib import Path
 import shutil
 import subprocess
 import tarfile
+
+from run_process import run_with_timeout
+from hardware import validate_vivado_signoff
 
 ROOT = Path(__file__).resolve().parents[2]
 DEMO = ROOT / 'ypcb_demo'
@@ -79,34 +81,15 @@ def main():
                 report['status'] = 'RUNNING'
                 save()
                 with (out / 'version.log').open('w') as log:
-                    subprocess.run([args.vivado, '-version'], stdout=log, stderr=subprocess.STDOUT, check=True, timeout=60)
+                    run_with_timeout([args.vivado, '-version'], stdout=log, stderr=subprocess.STDOUT, check=True, timeout=60)
                 with (out / 'build.log').open('w') as log:
-                    result = subprocess.run(report['argv'], cwd=out, stdout=log, stderr=subprocess.STDOUT, timeout=14400)
+                    result = run_with_timeout(report['argv'], cwd=out, stdout=log, stderr=subprocess.STDOUT, timeout=14400)
                 report['returncode'] = result.returncode
                 if result.returncode or 'YPCB BUILD PASS' not in (out / 'build.log').read_text():
                     raise RuntimeError(f'Implementation failed ({result.returncode}); inspect build.log')
                 report['signoff'] = json.loads((out / 'signoff.json').read_text())
-                signoff = report['signoff']
-                if (signoff.get('core_clock_mhz') != args.core_mhz or
-                        abs(signoff.get('core_clock_period_ns', 0) - 1000 / args.core_mhz) > 0.001):
-                    raise RuntimeError('Routed core clock differs from requested frequency')
-                if signoff.get('clock_iostandard') != report['clock_iostandard']:
-                    raise RuntimeError('Routed clock I/O standard differs from the requested standard')
-                if signoff.get('reset_pulltype') != 'PULLUP':
-                    raise RuntimeError('Routed reset input lacks its required pull-up')
-                if signoff.get('part') != PART or signoff.get('internal_timing_coverage') is not True or signoff.get('blocking_drc') != 0:
-                    raise RuntimeError('Missing implementation signoff evidence')
-                if signoff.get('fully_routed') is not True or signoff.get('routing_errors') != 0:
-                    raise RuntimeError('Missing complete, error-free routing evidence')
-                expected_decks = ['default', 'router_checks', 'timing_checks']
-                if args.emit_bitstream:
-                    expected_decks.append('bitstream_checks')
-                if signoff.get('drc_ruledecks') != expected_decks:
-                    raise RuntimeError('Missing required implementation/bitstream DRC checks')
-                for key in ('setup_slack_ns', 'hold_slack_ns'):
-                    value = signoff.get(key)
-                    if not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
-                        raise RuntimeError(f'Invalid {key}')
+                validate_vivado_signoff(report, args.emit_bitstream)
+                report['routed_checkpoint_sha256'] = digest(out / 'routed.dcp')
                 report['status'] = 'IMPLEMENTATION_PASS'
                 if args.emit_bitstream:
                     report['bitstream_sha256'] = digest(out / 'tiny_tpu_ypcb.bit')

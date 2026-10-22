@@ -42,6 +42,14 @@ def main():
                 report['loader_regression_returncode'] = regression.returncode
                 if regression.returncode:
                     raise RuntimeError('Extracted-bundle loader regression failed; see verify.log')
+                if 'ypcb_demo/tools/test_build_tools.py' in build['source_hashes']:
+                    tools = subprocess.run(['python3', 'ypcb_demo/tools/test_build_tools.py'], cwd=root,
+                                           stdout=log, stderr=subprocess.STDOUT, timeout=30)
+                    report['build_tools_regression_returncode'] = tools.returncode
+                    if tools.returncode:
+                        raise RuntimeError('Extracted-bundle build tools regression failed; see verify.log')
+                else:
+                    report['build_tools_regression'] = 'NOT_IN_HISTORICAL_BUNDLE'
                 if 'ypcb_demo/tools/test_observe_selftest.py' in build['source_hashes']:
                     observer = subprocess.run(['python3', 'ypcb_demo/tools/test_observe_selftest.py'], cwd=root,
                                               stdout=log, stderr=subprocess.STDOUT, timeout=30)

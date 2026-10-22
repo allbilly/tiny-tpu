@@ -32,10 +32,16 @@ class ArchivedHardwareResult(unittest.TestCase):
         root.mkdir()
         build = json.loads((self.evidence / 'build.json').read_text())
         build['source_hashes'] = {}
-        for name in ('design.v', 'board.xdc', 'build.tcl', 'sources.f'):
+        for name in ('design.v', 'extra.sv', 'ypcb_demo/fpga/ypcb.xdc',
+                     'ypcb_demo/fpga/build.tcl', 'ypcb_demo/fpga/sources.f'):
             path = root / name
-            path.write_text('fixture\n')
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('design.v\nextra.sv\n' if path.name == 'sources.f' else 'fixture\n')
             build['source_hashes'][name] = digest(path)
+        self.change_build(build)
+        return root
+
+    def change_build(self, build):
         build_path = self.evidence / 'build.json'
         build_path.write_text(json.dumps(build))
         simulation_path = self.evidence / 'simulation.json'
@@ -47,7 +53,6 @@ class ArchivedHardwareResult(unittest.TestCase):
         preflight['build_report_sha256'] = digest(build_path)
         preflight['simulation_report_sha256'] = digest(simulation_path)
         preflight_path.write_text(json.dumps(preflight))
-        return root
 
     def test_explicit_source_binding(self):
         result = verify(self.evidence, root=self.source_checkout())
@@ -65,6 +70,36 @@ class ArchivedHardwareResult(unittest.TestCase):
     def test_missing_current_sources_fail_explicit_binding(self):
         with self.assertRaises(OSError):
             verify(self.evidence, root=Path(self.temporary.name) / 'empty-checkout')
+
+    def test_empty_bindings_cannot_claim_current_sources_checked(self):
+        root = self.source_checkout()
+        build = json.loads((self.evidence / 'build.json').read_text())
+        build['source_hashes'] = {}
+        self.change_build(build)
+        with self.assertRaisesRegex(ValueError, 'Incomplete implementation source bindings'):
+            verify(self.evidence, root=root)
+
+    def test_omitted_compiled_source_binding(self):
+        root = self.source_checkout()
+        build = json.loads((self.evidence / 'build.json').read_text())
+        del build['source_hashes']['design.v']
+        self.change_build(build)
+        with self.assertRaisesRegex(ValueError, 'Incomplete implementation source bindings'):
+            verify(self.evidence, root=root)
+
+    def test_systemverilog_source_edit_fails_explicit_binding(self):
+        root = self.source_checkout()
+        (root / 'extra.sv').write_text('changed SystemVerilog input\n')
+        with self.assertRaisesRegex(ValueError, 'Implementation source changed: extra.sv'):
+            verify(self.evidence, root=root)
+
+    def test_source_binding_cannot_escape_checkout(self):
+        root = self.source_checkout()
+        build = json.loads((self.evidence / 'build.json').read_text())
+        build['source_hashes']['../outside.v'] = 'a' * 64
+        self.change_build(build)
+        with self.assertRaisesRegex(ValueError, 'Source path escapes checkout'):
+            verify(self.evidence, root=root)
 
     def test_archive_cli_without_implementation_sources(self):
         root = Path(self.temporary.name) / 'archive-only'
@@ -104,6 +139,12 @@ class ArchivedHardwareResult(unittest.TestCase):
         with (self.evidence / 'program.json').open('a') as stream:
             stream.write(' ')
         with self.assertRaisesRegex(ValueError, 'Receipt hash mismatch'):
+            verify(self.evidence)
+
+    def test_simulation_error_after_pass_marker(self):
+        with (self.evidence / 'simulation.log').open('a') as stream:
+            stream.write('\nFATAL: routed regression failed after its PASS marker\n')
+        with self.assertRaisesRegex(ValueError, 'Routed simulation did not pass'):
             verify(self.evidence)
 
     def test_raw_failure_despite_pass_status(self):

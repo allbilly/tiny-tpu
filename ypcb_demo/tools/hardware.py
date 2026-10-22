@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import re
 import shutil
@@ -14,7 +15,8 @@ from check_dsp_fasm import check_configuration
 from check_engine import validate_manifest, validate_database_check
 
 DEMO = Path(__file__).resolve().parents[1]
-DEFAULT_LOADER = Path('/home/fedora/ypcb/openFPGALoader/build-xpcu-debug/openFPGALoader')
+DEFAULT_LOADER = os.environ.get('YPCB_OPENFPGALOADER') or shutil.which('openFPGALoader')
+DEFAULT_INIT_SCRIPT = Path(os.environ.get('YPCB_INIT_SCRIPT', Path.home() / 'ypcb/dlc10-init.sh'))
 JTAG_HZ = 500000
 
 
@@ -52,6 +54,55 @@ def bitstream_part(path):
     return part
 
 
+def validate_vivado_signoff(build, emit_bitstream=True):
+    """Require explicit routing, timing and electrical evidence, beyond a status label."""
+    signoff = build.get('signoff', {})
+    if build.get('part') != 'xc7k480tffg1156-2' or build.get('returncode') != 0:
+        raise RuntimeError('Vivado build lacks a successful exact-part implementation')
+    # The first 50 MHz builder predates MMCM support and recorded no clock
+    # frequency fields. Keep its existing timing/routing-qualified receipt
+    # loadable; any report with frequency metadata must provide the full set.
+    frequency_fields = ('input_clock_mhz', 'core_clock_mhz')
+    legacy_clock = (not any(key in build for key in frequency_fields) and
+                    'core_clock_mhz' not in signoff and 'core_clock_period_ns' not in signoff)
+    if not legacy_clock:
+        core = build.get('core_clock_mhz')
+        period = signoff.get('core_clock_period_ns')
+        if (type(core) is not int or core not in (50, 100, 150) or
+                signoff.get('core_clock_mhz') != core or
+                type(period) not in (int, float) or not math.isfinite(period) or
+                abs(period - 1000 / core) > 0.001):
+            raise RuntimeError('Vivado routed core clock differs from the requested frequency')
+        if build.get('input_clock_mhz') != 50:
+            raise RuntimeError('Vivado build lacks the 50 MHz YPCB input clock')
+    clock = build.get('clock_iostandard')
+    if clock not in ('LVCMOS18', 'LVCMOS33') or signoff.get('clock_iostandard') != clock:
+        raise RuntimeError('Vivado routed clock I/O standard differs from the build')
+    if emit_bitstream:
+        if build.get('clock_iostandard_confirmed') is not True:
+            raise RuntimeError('Vivado bitstream lacks a confirmed clock I/O standard')
+        if (build.get('configuration_voltage'), build.get('cfgbvs')) not in (
+                ('1.5', 'GND'), ('1.8', 'GND'), ('2.5', 'VCCO'), ('3.3', 'VCCO')):
+            raise RuntimeError('Vivado bitstream lacks compatible configuration-bank values')
+    if signoff.get('reset_pulltype') != 'PULLUP':
+        raise RuntimeError('Vivado routed reset input lacks its required pull-up')
+    if (signoff.get('part') != build['part'] or
+            signoff.get('internal_timing_coverage') is not True or
+            signoff.get('blocking_drc') != 0):
+        raise RuntimeError('Vivado build lacks implementation signoff evidence')
+    if signoff.get('fully_routed') is not True or signoff.get('routing_errors') != 0:
+        raise RuntimeError('Vivado build lacks complete, error-free routing evidence')
+    decks = ['default', 'router_checks', 'timing_checks']
+    if emit_bitstream:
+        decks.append('bitstream_checks')
+    if signoff.get('drc_ruledecks') != decks:
+        raise RuntimeError('Vivado build lacks required implementation/bitstream DRC checks')
+    for key in ('setup_slack_ns', 'hold_slack_ns'):
+        value = signoff.get(key)
+        if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
+            raise RuntimeError(f'Vivado build has invalid {key}')
+
+
 def checked_bitstream(directory, experimental=False, electrical=None):
     """Validate a build independently of cable access; do not program anything."""
     build = json.loads((directory / 'report.json').read_text())
@@ -59,6 +110,7 @@ def checked_bitstream(directory, experimental=False, electrical=None):
         raise RuntimeError('Build report lacks an exact-part YPCB bitstream')
     status = build.get('status')
     if status == 'BITSTREAM_PASS':
+        validate_vivado_signoff(build)
         bit = directory / 'tiny_tpu_ypcb.bit'
     elif status == 'OPENXC7_BITSTREAM_EXPERIMENTAL' and experimental:
         clock = build.get('clock_iostandard')
@@ -147,7 +199,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('check', 'detect', 'init', 'program-sram'))
     parser.add_argument('--run', type=Path, help='build run directory containing report.json and .bit')
-    parser.add_argument('--loader', type=Path, default=DEFAULT_LOADER)
+    parser.add_argument('--loader', type=Path, default=DEFAULT_LOADER,
+                        help='DLC10-capable openFPGALoader (default: YPCB_OPENFPGALOADER or PATH)')
+    parser.add_argument('--init-script', type=Path, default=DEFAULT_INIT_SCRIPT,
+                        help='DLC10 initializer (default: YPCB_INIT_SCRIPT or ~/ypcb/dlc10-init.sh)')
     parser.add_argument('--experimental-openxc7', action='store_true',
                         help='explicitly allow an openXC7 experimental build with incomplete device timing/DRC coverage')
     parser.add_argument('--clock-iostandard', choices=('LVCMOS18', 'LVCMOS33'),
@@ -186,8 +241,10 @@ def main():
             raise RuntimeError(f'{name} failed: {output[-2000:]}')
         return output
     try:
-        if not shutil.which('lsusb') or not args.loader.is_file():
-            raise RuntimeError('lsusb or the Fedora DLC10 loader is unavailable')
+        if not shutil.which('lsusb') or args.loader is None or not args.loader.is_file():
+            raise RuntimeError('lsusb or a DLC10-capable openFPGALoader is unavailable; set --loader')
+        if args.action == 'init' and not args.init_script.is_file():
+            raise RuntimeError('DLC10 initializer is unavailable; set --init-script')
         usb = run(['lsusb'], 'usb')
         cables = [line for line in usb.splitlines() if re.search(r'ID 03fd:(0013|0008)\b', line)]
         report['dlc10_devices'] = cables
@@ -200,7 +257,7 @@ def main():
         if len(cables) != 1:
             raise RuntimeError(f'Expected exactly one DLC10 cable; found {len(cables)}')
         if args.action == 'init':
-            run(['bash', '/home/fedora/ypcb/dlc10-init.sh'], 'initialization', timeout=180)
+            run(['bash', args.init_script], 'initialization', timeout=180)
         elif args.action in ('detect', 'program-sram'):
             if '03fd:0008' not in cables[0]:
                 raise RuntimeError('Cable is cold; run hardware.py init before detection')

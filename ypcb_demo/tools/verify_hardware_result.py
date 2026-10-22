@@ -25,6 +25,29 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def verify_current_sources(build, root):
+    """Check a complete implementation input set, including the source list."""
+    root = Path(root).resolve()
+    hashes = build['source_hashes']
+    required = {'ypcb_demo/fpga/sources.f', 'ypcb_demo/fpga/build.tcl',
+                'ypcb_demo/fpga/ypcb.xdc'}
+    require(isinstance(hashes, dict) and required <= hashes.keys(),
+            'Incomplete implementation source bindings')
+    paths = {}
+    for name, expected in hashes.items():
+        path = (root / name).resolve()
+        require(not Path(name).is_absolute() and path.is_relative_to(root),
+                'Source path escapes checkout')
+        if path.suffix.lower() in ('.v', '.sv', '.vhd', '.vhdl', '.xdc', '.tcl') or path.name == 'sources.f':
+            require(digest(path) == expected, f'Implementation source changed: {name}')
+            paths[name] = path
+    # The hash of sources.f has already matched. Every file actually compiled
+    # from that list must also be present in the recorded bindings.
+    sources = {line.strip() for line in paths['ypcb_demo/fpga/sources.f'].read_text().splitlines()
+               if line.strip()}
+    require(sources and sources <= paths.keys(), 'Incomplete implementation source bindings')
+
+
 def verify(evidence=DEFAULT_EVIDENCE, bitstream=None, root=None):
     """Validate historical evidence; optionally bind implementation inputs to root."""
     evidence = Path(evidence)
@@ -59,9 +82,12 @@ def verify(evidence=DEFAULT_EVIDENCE, bitstream=None, root=None):
                 (manifest, preflight, program, observation)), 'Flash write recorded')
     require(build['status'] == 'BITSTREAM_PASS' and build['returncode'] == 0
             and build['bitstream_generated'] is True, 'Build did not pass')
+    simulation_log = (evidence / 'simulation.log').read_text()
     require(simulation['status'] == 'PASS_VIVADO_ROUTED_FUNCTIONAL_SIMULATION'
             and simulation['pass_marker'] == 'YPCB MAPPED REGRESSION PASS'
-            and simulation['pass_marker'] in (evidence / 'simulation.log').read_text(),
+            and simulation['pass_marker'] in simulation_log
+            and re.search(r'^\s*(?:FATAL|ERROR)(?:\s|:)', simulation_log,
+                          re.IGNORECASE | re.MULTILINE) is None,
             'Routed simulation did not pass')
     for report in (program, simulation):
         require(report['commands'] and all(c['returncode'] == 0 for c in report['commands']),
@@ -96,12 +122,7 @@ def verify(evidence=DEFAULT_EVIDENCE, bitstream=None, root=None):
     # current implementation hashes only when explicitly binding this checkout
     # to the recorded image. Documentation and Python tools are not FPGA inputs.
     if root is not None:
-        root = Path(root).resolve()
-        for name, expected in build['source_hashes'].items():
-            path = (root / name).resolve()
-            require(path.is_relative_to(root), 'Source path escapes checkout')
-            if path.suffix in ('.v', '.xdc', '.tcl') or path.name == 'sources.f':
-                require(digest(path) == expected, f'Implementation source changed: {name}')
+        verify_current_sources(build, root)
 
     require(program['idcode'] == observation['idcode'] == '0x23751093', 'Wrong JTAG IDCODE')
     require(observation['capture_ir'] & 0x30 == 0x30, 'INIT/DONE not asserted')

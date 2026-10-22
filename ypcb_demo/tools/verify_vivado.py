@@ -5,10 +5,13 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 import time
 
+from run_process import run_with_timeout
 from hardware import checked_bitstream
+from verify_hardware_result import verify_current_sources
 
 ROOT = Path(__file__).resolve().parents[2]
 PART = 'xc7k480tffg1156-2'
@@ -16,6 +19,23 @@ PART = 'xc7k480tffg1156-2'
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def checked_checkpoint(build_run, build):
+    """Bind the simulated checkpoint to the passing bitstream implementation."""
+    checkpoint = build_run / 'routed.dcp'
+    expected = build.get('routed_checkpoint_sha256')
+    if not expected:
+        raise RuntimeError('Build lacks a routed checkpoint hash; rebuild before routed simulation')
+    if digest(checkpoint) != expected:
+        raise RuntimeError('Routed checkpoint differs from the passing build')
+    return checkpoint
+
+
+def check_simulation_log(log):
+    if ('YPCB MAPPED REGRESSION PASS' not in log or
+            re.search(r'^\s*(?:FATAL|ERROR)(?:\s|:)', log, re.IGNORECASE | re.MULTILINE)):
+        raise RuntimeError('XSim did not prove startup, repeated TPU PASS and reset recovery')
 
 
 def main():
@@ -40,7 +60,7 @@ def main():
         before = time.monotonic()
         try:
             with (out / command['log']).open('w') as log:
-                result = subprocess.run(command['argv'], cwd=out, stdout=log, stderr=subprocess.STDOUT, timeout=timeout)
+                result = run_with_timeout(command['argv'], cwd=out, stdout=log, stderr=subprocess.STDOUT, timeout=timeout)
             command.update(returncode=result.returncode, seconds=round(time.monotonic() - before, 3))
             if result.returncode:
                 raise RuntimeError(f'{name} failed ({result.returncode}); see {command["log"]}')
@@ -63,14 +83,13 @@ def main():
         if checked_bit != bit or actual != build['bitstream_sha256']:
             raise RuntimeError('Bitstream differs from the passing build')
         report['part_header'] = part_header
-        for name, expected in build['source_hashes'].items():
-            if Path(name).suffix in ('.v', '.xdc', '.tcl') or name.endswith('/sources.f'):
-                if digest(ROOT / name) != expected:
-                    raise RuntimeError('RTL/constraint/build input changed: ' + name)
-        checkpoint = build_run / 'routed.dcp'
+        verify_current_sources(build, ROOT)
+        checkpoint = checked_checkpoint(build_run, build)
         bench = ROOT / 'ypcb_demo/sim/tb_mapped.v'
         glbl = vivado.parent.parent / 'data/verilog/src/glbl.v'
         inputs = [Path(__file__).resolve(), ROOT / 'ypcb_demo/tools/hardware.py',
+                  ROOT / 'ypcb_demo/tools/run_process.py',
+                  ROOT / 'ypcb_demo/tools/verify_hardware_result.py',
                   build_report, checkpoint, bit, bench, glbl]
         report['inputs_sha256'] = {str(p): digest(p) for p in inputs}
         export = out / 'export.tcl'
@@ -85,8 +104,7 @@ def main():
         run([vivado.parent / 'xsim', 'tinytpu_vivado', '-runall', '-onerror', 'quit',
              '-onfinish', 'quit', '-log', out / 'xsim.engine.log'], 'simulation', timeout=180)
         log = (out / 'simulation.log').read_text()
-        if 'YPCB MAPPED REGRESSION PASS' not in log or 'Fatal:' in log:
-            raise RuntimeError('XSim did not prove startup, repeated TPU PASS and reset recovery')
+        check_simulation_log(log)
         if report['inputs_sha256'] != {str(p): digest(p) for p in inputs}:
             raise RuntimeError('Inputs changed during simulation')
         report.update(status='PASS_VIVADO_ROUTED_FUNCTIONAL_SIMULATION',

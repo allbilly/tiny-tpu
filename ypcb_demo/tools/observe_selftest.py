@@ -17,6 +17,12 @@ import time
 
 from hardware import checked_bitstream
 
+PINS = {
+    'heartbeat': dict(pin='P30', output_cell=852, disable_cell=851),
+    'pass': dict(pin='M30', output_cell=846, disable_cell=845),
+    'failure': dict(pin='N30', output_cell=849, disable_cell=848),
+}
+
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -30,17 +36,21 @@ def require(condition, message):
 class Xvc:
     def __init__(self, host, port):
         self.sock = socket.create_connection((host, port), timeout=5)
-        self.sock.sendall(b'getinfo:')
-        info = bytearray()
-        while not info.endswith(b'\n'):
-            info.extend(self.recv(1))
-            if len(info) > 256:
-                raise ValueError('Invalid XVC response')
-        self.info = info.decode().strip()
-        name, size = self.info.split(':')
-        require(name.startswith('xvcServer_'), 'Invalid XVC server name')
-        self.max_bits = int(size)
-        require(self.max_bits > 0, 'Invalid XVC scan capacity')
+        try:
+            self.sock.sendall(b'getinfo:')
+            info = bytearray()
+            while not info.endswith(b'\n'):
+                info.extend(self.recv(1))
+                if len(info) > 256:
+                    raise ValueError('Invalid XVC response')
+            self.info = info.decode().strip()
+            name, size = self.info.split(':')
+            require(name.startswith('xvcServer_'), 'Invalid XVC server name')
+            self.max_bits = int(size)
+            require(self.max_bits > 0, 'Invalid XVC scan capacity')
+        except BaseException:
+            self.sock.close()
+            raise
 
     def recv(self, size):
         result = bytearray()
@@ -98,6 +108,7 @@ def main():
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     report = dict(status='CHECKING_OBSERVATION_INPUTS', hardware_accessed=False,
+                  hardware_access_attempted=False,
                   application_verified=False, programming_performed=False,
                   flash_written=False, samples=[])
     link = None
@@ -108,15 +119,32 @@ def main():
         temp.write_text(json.dumps(report, indent=2)+'\n')
         temp.replace(out / 'report.json')
 
+    def close_link():
+        nonlocal link
+        current, link = link, None
+        if current is not None:
+            current.close()
+
     try:
         save()
         bit, build, checksum, part = checked_bitstream(args.run.resolve())
-        receipt = json.loads(args.load_receipt.read_text())
-        require(receipt['status'] == 'PASS' and receipt['hardware_programmed'] is True,
+        # The original qualified 50 MHz build predates this report field.
+        # Only apply the default after checked_bitstream accepted the build.
+        core_mhz = build.get('core_clock_mhz', 50)
+        low = build['led_active_low']
+        require(type(low) is int and low in (0, 1), 'Invalid LED polarity')
+        receipt_bytes = args.load_receipt.read_bytes()
+        receipt = json.loads(receipt_bytes)
+        require(receipt['status'] == 'PASS' and receipt['hardware_programmed'] is True
+                and receipt['action'] == 'program-sram'
+                and receipt['configuration_state'] == 'SRAM_LOAD_COMPLETED',
                 'SRAM load receipt did not pass')
         require(receipt['flash_written'] is False, 'Flash write recorded in load receipt')
         require(receipt['bitstream_sha256'] == checksum, 'Load receipt bitstream differs')
-        text = args.bsdl.read_text()
+        require(receipt['bitstream_part'] == part and receipt['idcode'] == '0x23751093',
+                'Load receipt device identity differs')
+        bsdl_bytes = args.bsdl.read_bytes()
+        text = bsdl_bytes.decode()
         require('entity XC7K480T_FFG1156 is' in text, 'Unexpected BSDL device')
         boundary = re.search(r'attribute BOUNDARY_LENGTH.*?is\s+(\d+);', text)
         require(boundary is not None, 'Missing BSDL boundary length')
@@ -133,13 +161,15 @@ def main():
             require(0 <= output < length and 0 <= enable < length,
                     f'BSDL boundary cell out of range: {pin}')
             pins[signal] = dict(pin=pin, output_cell=output, disable_cell=enable)
+        require(pins == PINS, 'Unexpected BSDL pin mapping')
         report.update(bitstream=str(bit), bitstream_sha256=checksum, part=part,
-                      core_clock_mhz=build['core_clock_mhz'],
-                      load_receipt_sha256=digest(args.load_receipt),
-                      bsdl=str(args.bsdl.resolve()), bsdl_sha256=digest(args.bsdl),
+                      core_clock_mhz=core_mhz,
+                      load_receipt_sha256=hashlib.sha256(receipt_bytes).hexdigest(),
+                      bsdl=str(args.bsdl.resolve()), bsdl_sha256=hashlib.sha256(bsdl_bytes).hexdigest(),
                       boundary_length=length, pins=pins, observer_sha256=digest(__file__),
                       scope='Configured output values through SAMPLE, not full internal-score readback')
         save()
+        report['hardware_access_attempted'] = True
         link = Xvc(args.host, args.port)
         report['hardware_accessed'] = True
         report['xvc_info'] = link.info
@@ -167,8 +197,6 @@ def main():
             save()
             time.sleep(.05)
         report['temperature_after'] = link.temperature()
-        low = int(build['led_active_low'])
-        require(low in (0, 1), 'Invalid LED polarity')
         require(all(row['outputs']['pass'] == (1 ^ low) and
                     row['outputs']['failure'] == low for row in report['samples']),
                 'Built-in PASS/failure output state differs; preserve samples')
@@ -179,6 +207,9 @@ def main():
         report['heartbeat_transitions'] = transitions
         require(len(report['samples']) >= 10, 'Too few captures')
         require(transitions >= 2, 'Heartbeat did not keep toggling')
+        # Returning the TAP to BYPASS and closing the transport are part of a
+        # successful observation. A failed cleanup must never leave PASS saved.
+        close_link()
         report.update(status='PASS_PHYSICAL_TINY_TPU_XOR_SELFTEST_OUTPUTS',
                       application_verified=True,
                       limitations=['PASS is the built-in exact XOR scoreboard, observed through its output.',
@@ -186,12 +217,17 @@ def main():
                                    'Configured clock comes from the bound bitstream; not an independent frequency measurement.'])
         print(report['status'])
     except BaseException as error:
-        report.update(status='FAIL', reason=repr(error))
+        report.update(status='FAIL', application_verified=False, reason=repr(error))
         raise
     finally:
         try:
-            if link is not None:
-                link.close()
+            close_link()
+        except BaseException as error:
+            # Preserve the original observation error if cleanup also fails.
+            report['cleanup_error'] = repr(error)
+            if report['status'] != 'FAIL':
+                report.update(status='FAIL', application_verified=False, reason=repr(error))
+                raise
         finally:
             save()
 
